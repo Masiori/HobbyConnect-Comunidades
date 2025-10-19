@@ -45,4 +45,10 @@ export class CommunitiesController {
   ) {
     return this.communitiesService.leaveCommunity(id, joinDto.userId);
   }
+    @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.communitiesService.findOne(id);
+  }
+
 }
+
