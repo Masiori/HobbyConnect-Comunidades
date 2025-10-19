@@ -180,4 +180,17 @@ export class CommunitiesService {
       .where('c.id = :cid', { cid: communityId })
       .getMany();
   }
+
+  async findOne(id: number): Promise<Community> {
+    const community = await this.communityRepo.findOne({
+      where: { id },
+      relations: ['members'],
+    });
+
+    if (!community) {
+      throw new NotFoundException(`Community with id ${id} not found`);
+    }
+
+    return community;
+  }
 }
