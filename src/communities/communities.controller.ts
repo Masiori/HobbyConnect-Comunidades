@@ -34,7 +34,7 @@ export class CommunitiesController {
     @Param('id', ParseIntPipe) id: number,
     @Body() joinDto: JoinCommunityDto,
   ) {
-    return this.communitiesService.joinCommunity(id, joinDto.id);
+    return this.communitiesService.joinCommunity(id, joinDto.userId);
   }
 
   // Usamos POST para leave (evita problemas con body en DELETE)
@@ -43,6 +43,6 @@ export class CommunitiesController {
     @Param('id', ParseIntPipe) id: number,
     @Body() joinDto: JoinCommunityDto,
   ) {
-    return this.communitiesService.leaveCommunity(id, joinDto.id);
+    return this.communitiesService.leaveCommunity(id, joinDto.userId);
   }
 }
